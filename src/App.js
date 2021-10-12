@@ -1,3 +1,5 @@
+import movieData from './movieData.js';
+
 import logo from './logo.svg';
 import './App.css';
 
