@@ -1,7 +1,14 @@
-import movieData from './movieData.js';
-import './App.css';
+import movieData from './movieData.js'
+import './App.css'
+import LoginForm from './LoginForm'
+import React, { Component } from 'react'
 
-const App = () => {
+class App extends Component {
+  state = {
+    email: '',
+    password: ''
+  }
+
   return (
     <main>
       <LoginForm />
