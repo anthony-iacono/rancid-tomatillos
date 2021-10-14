@@ -9,6 +9,14 @@ class App extends Component {
     password: ''
   }
 
+  handleChange() {
+
+  }
+
+  handleSubmit() {
+    
+  }
+
   return (
     <main>
       <LoginForm />
