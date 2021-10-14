@@ -4,11 +4,7 @@ import './App.css';
 const App = () => {
   return (
     <main>
-      <form>
-        <input type='text' placeholder='username' required />
-        <input type='text' placeholder='password' required />
-        <button>Log in</button>
-      </form>
+      <LoginForm />
     </main>
   )
 }
