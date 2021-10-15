@@ -1,7 +1,9 @@
-import movieData from './movieData.js'
-import './App.css'
-import LoginForm from './LoginForm'
 import React, { Component } from 'react'
+import '../styles/App.css'
+
+import LoginForm from './LoginForm'
+import movieData from '../data/movieData.js'
+
 
 class App extends Component {
   state = {
@@ -17,11 +19,13 @@ class App extends Component {
 
   }
 
-  return (
-    <main>
-      <LoginForm />
-    </main>
-  )
+  render() {
+    return (
+      <main>
+        <LoginForm />
+      </main>
+    )
+  }
 }
 
 export default App;
