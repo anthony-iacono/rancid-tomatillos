@@ -3,6 +3,7 @@ import '../styles/App.css'
 
 import LoginForm from './LoginForm'
 import Gallery from './Gallery'
+import Details from './Details'
 import movieData from '../data/movieData'
 
 class App extends Component {
@@ -11,7 +12,8 @@ class App extends Component {
     password: '',
     userID: '1',
     userName: '',
-    movies: []
+    movies: [],
+    selectedMovieID: 1
   }
 
   componentDidMount = () => {
@@ -56,7 +58,11 @@ class App extends Component {
               email={this.state.email}
               password={this.state.password}
             />
-            : <Gallery movies={ this.state.movies }/>
+            : (
+              this.state.selectedMovieID
+              ? <Details />
+              : <Gallery movies={ this.state.movies }/>
+            )
           }
         </main>
         <footer>
