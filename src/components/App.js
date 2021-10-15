@@ -45,12 +45,15 @@ class App extends Component {
   render() {
     return (
       <main>
-        <LoginForm
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-          email={this.state.email}
-          password={this.state.password}
-         />
+        { !this.state.userID
+          ? <LoginForm
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+            email={this.state.email}
+            password={this.state.password}
+          />
+          : <Gallery movies={ this.state.movies }/>
+        }
       </main>
     )
   }
