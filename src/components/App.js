@@ -2,15 +2,21 @@ import React, { Component } from 'react'
 import '../styles/App.css'
 
 import LoginForm from './LoginForm'
-import movieData from '../data/movieData.js'
-
+import Gallery from './Gallery'
+import movieData from '../data/movieData'
 
 class App extends Component {
   state = {
     email: '',
     password: '',
-    userID: '',
-    userName: ''
+    userID: '1',
+    userName: '',
+    movies: []
+  }
+
+  componentDidMount = () => {
+    // fetch('')
+    this.setState({ movies: movieData.movies })
   }
 
   handleChange = (event) => {
@@ -38,14 +44,25 @@ class App extends Component {
 
   render() {
     return (
-      <main>
-        <LoginForm
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-          email={this.state.email}
-          password={this.state.password}
-         />
-      </main>
+      <>
+        <header>
+          <h1>RaNcId ToMaTiLlOs</h1>
+        </header>
+        <main>
+          { !this.state.userID
+            ? <LoginForm
+              handleChange={this.handleChange}
+              handleSubmit={this.handleSubmit}
+              email={this.state.email}
+              password={this.state.password}
+            />
+            : <Gallery movies={ this.state.movies }/>
+          }
+        </main>
+        <footer>
+          <h5>© 2021</h5>
+        </footer>
+      </>
     )
   }
 }
