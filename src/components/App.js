@@ -8,7 +8,9 @@ import movieData from '../data/movieData.js'
 class App extends Component {
   state = {
     email: '',
-    password: ''
+    password: '',
+    userID: '',
+    userName: ''
   }
 
   handleChange = (event) => {
@@ -17,7 +19,21 @@ class App extends Component {
   }
 
   handleSubmit = () => {
-
+    // fetch("https://rancid-tomatillos.herokuapp.com/api/v2/login", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   },
+    //   body: {
+    //     "email": "fake@email.com",
+    //     "password": "password"
+    //   }
+    // })
+    // .then(response => response.json())
+    // .then({user: {id, name}} => {
+    //   this.setState({ userID: id, userName: name })
+    // })
+    // .catch({error} => console.warn(error))
   }
 
   render() {
