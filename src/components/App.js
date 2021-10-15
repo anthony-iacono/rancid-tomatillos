@@ -9,14 +9,14 @@ class App extends Component {
   state = {
     email: '',
     password: '',
-    userID: '',
+    userID: '1',
     userName: '',
     movies: []
   }
 
   componentDidMount = () => {
     // fetch('')
-    this.setState({ movies: movieData })
+    this.setState({ movies: movieData.movies })
   }
 
   handleChange = (event) => {
