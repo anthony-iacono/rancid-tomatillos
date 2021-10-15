@@ -9,12 +9,12 @@ class App extends Component {
     password: ''
   }
 
-  handleChange() {
+  handleChange = () => {
 
   }
 
-  handleSubmit() {
-    
+  handleSubmit = () => {
+
   }
 
   return (
