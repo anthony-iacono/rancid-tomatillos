@@ -2,15 +2,21 @@ import React, { Component } from 'react'
 import '../styles/App.css'
 
 import LoginForm from './LoginForm'
-import movieData from '../data/movieData.js'
-
+import Gallery from './Gallery'
+import movieData from '../data/movieData'
 
 class App extends Component {
   state = {
     email: '',
     password: '',
     userID: '',
-    userName: ''
+    userName: '',
+    movies: []
+  }
+
+  componentDidMount = () => {
+    // fetch('')
+    this.setState({ movies: movieData })
   }
 
   handleChange = (event) => {
