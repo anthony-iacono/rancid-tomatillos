@@ -3,6 +3,7 @@ import '../styles/App.css'
 
 import LoginForm from './LoginForm'
 import Gallery from './Gallery'
+import Details from './Details'
 import movieData from '../data/movieData'
 
 class App extends Component {
@@ -11,12 +12,22 @@ class App extends Component {
     password: '',
     userID: '1',
     userName: '',
-    movies: []
+    movies: [],
+    selectedMovieID: 0,
+    selectedMovie: null
   }
 
   componentDidMount = () => {
     // fetch('')
     this.setState({ movies: movieData.movies })
+  }
+
+  displayDetails = (id) => {
+    const selectedMovie = movieData.movies.find(movie =>
+      movie.id === id
+    )
+    this.setState({ selectedMovie: selectedMovie })
+
   }
 
   handleChange = (event) => {
@@ -43,21 +54,35 @@ class App extends Component {
   }
 
   render() {
+    let view;
+    if (!this.state.userID) {
+      view = <LoginForm
+        handleChange={this.handleChange}
+        handleSubmit={this.handleSubmit}
+        email={this.state.email}
+        password={this.state.password}
+      />
+    } else if (this.state.selectedMovie) {
+      view = <Details
+        selectedMovie={this.state.selectedMovie}
+      />
+    } else {
+      view = <Gallery
+        movies={ this.state.movies }
+        displayDetails={ this.displayDetails }
+      />
+    }
+
+    // figure out passing details from fetch into details' props
+    // avoid nested ternary, switch statement instead?
+
     return (
       <>
         <header>
           <h1>RaNcId ToMaTiLlOs</h1>
         </header>
         <main>
-          { !this.state.userID
-            ? <LoginForm
-              handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
-              email={this.state.email}
-              password={this.state.password}
-            />
-            : <Gallery movies={ this.state.movies }/>
-          }
+          {view}
         </main>
         <footer>
           <h5>© 2021</h5>
