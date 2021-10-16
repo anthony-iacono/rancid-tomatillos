@@ -18,7 +18,6 @@ const api = {
         }
         return response.json()
       })
-      // .catch(error => this.setState({error: error}))
   }
 }
 

@@ -47,9 +47,7 @@ class App extends Component {
         this.setState({ userID: id, userName: name })
       })
       .catch(error => {
-        // console.log(error.message)
         this.setState({error: error.message})
-        // console.log(this.state.error)
       })
   }
 
