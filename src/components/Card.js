@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Card = ({ poster, rating, release, displayDetails }) => {
+const Card = ({ id, poster, rating, release, displayDetails }) => {
   return (
-    <article onClick={ displayDetails }>
+    <article onClick={ () => displayDetails(id) }>
       <img src={poster} />
       <p>{rating}</p>
       <p>{release}</p>

@@ -22,8 +22,11 @@ class App extends Component {
     this.setState({ movies: movieData.movies })
   }
 
-  displayDetails = () => {
-    this.setState({ selectedMovie: movieData.movie })
+  displayDetails = (id) => {
+    const selectedMovie = movieData.movies.find(movie =>
+      movie.id === id
+    )
+    this.setState({ selectedMovie: selectedMovie })
 
   }
 
@@ -60,27 +63,7 @@ class App extends Component {
         password={this.state.password}
       />
     } else if (this.state.selectedMovie) {
-      const {
-        id,
-        title,
-        backdrop_path,
-        release_date,
-        overview,
-        genres,
-        runtime,
-        tagline,
-        average_rating
-      } = this.state.selectedMovie
       view = <Details
-        // id={ id }
-        // title={ title }
-        // backdrop_path={ backdrop_path }
-        // release_date={ release_date }
-        // overview={ overview }
-        // genres={ genres }
-        // runtime={ runtime }
-        // tagline={ tagline }
-        // average_rating={ average_rating }
         selectedMovie={this.state.selectedMovie}
       />
     } else {

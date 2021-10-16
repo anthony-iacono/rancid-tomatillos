@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Details = ({selectedMovie: { id, title, backdrop_path, release_date, overview, genres, runtime, tagline, average_rating }}) => {
+const Details = ({selectedMovie: { id, title, poster_path, release_date, overview, genres, runtime, tagline, average_rating }}) => {
   console.log(title)
   return (
-    <section style={{backgroundImage: `url("https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg")`}}>
+    <section style={{backgroundImage: `url(${poster_path})`}}>
       <h1>Details</h1>
       <p>{title}</p>
       <p>{release_date}</p>
