@@ -13,12 +13,18 @@ class App extends Component {
     userID: '1',
     userName: '',
     movies: [],
-    selectedMovieID: 0
+    selectedMovieID: 0,
+    selectedMovie: null
   }
 
   componentDidMount = () => {
     // fetch('')
     this.setState({ movies: movieData.movies })
+  }
+
+  displayDetails = () => {
+    this.setState({ selectedMovie: movieData.movie })
+
   }
 
   handleChange = (event) => {
@@ -48,19 +54,43 @@ class App extends Component {
     let view;
     if (!this.state.userID) {
       view = <LoginForm
-      handleChange={this.handleChange}
-      handleSubmit={this.handleSubmit}
-      email={this.state.email}
-      password={this.state.password}
+        handleChange={this.handleChange}
+        handleSubmit={this.handleSubmit}
+        email={this.state.email}
+        password={this.state.password}
       />
-    } else if (this.state.selectedMovieID) {
-      view = <Details />
+    } else if (this.state.selectedMovie) {
+      const {
+        id,
+        title,
+        backdrop_path,
+        release_date,
+        overview,
+        genres,
+        runtime,
+        tagline,
+        average_rating
+      } = this.state.selectedMovie
+      view = <Details
+        id={ id }
+        title={ title }
+        backdrop_path={ backdrop_path }
+        release_date={ release_date }
+        overview={ overview }
+        genres={ genres }
+        runtime={ runtime }
+        tagline={ tagline }
+        average_rating={ average_rating }
+      />
     } else {
-      view = <Gallery movies={ this.state.movies }/>
+      view = <Gallery
+        movies={ this.state.movies }
+        displayDetails={ this.displayDetails }
+      />
     }
 
     // figure out passing details from fetch into details' props
-    // avoid nested ternary, swithc statement instead?
+    // avoid nested ternary, switch statement instead?
 
     return (
       <>
