@@ -20,7 +20,7 @@ const LoginForm = ({ handleChange, handleSubmit, email, password, error }) => {
         required
       />
       <button>Log in</button>
-      {error && <p>{error}</p>}
+
     </form>
   )
 }

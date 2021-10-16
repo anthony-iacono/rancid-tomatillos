@@ -19,16 +19,16 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    // fetch('')
-    this.setState({ movies: movieData.movies })
+    api.getAllMovies()
+      .then(({movies}) => this.setState({ movies: movies }))
+      .catch(error => {
+        this.setState({error: error.message})
+      })
   }
 
   displayDetails = (id) => {
-    const selectedMovie = movieData.movies.find(movie =>
-      movie.id === id
-    )
-    this.setState({ selectedMovie: selectedMovie })
-
+    api.getSingleMovie(id)
+      .then(({ movie }) => this.setState({ selectedMovie: movie }))
   }
 
   backToGallery = () => {
@@ -79,6 +79,7 @@ class App extends Component {
           <h1>RaNcId ToMaTiLlOs</h1>
         </header>
         <main>
+          {this.state.error && <p>{this.state.error}</p>}
           {view}
         </main>
         <footer>
