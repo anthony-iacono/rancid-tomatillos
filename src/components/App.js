@@ -72,15 +72,16 @@ class App extends Component {
         average_rating
       } = this.state.selectedMovie
       view = <Details
-        id={ id }
-        title={ title }
-        backdrop_path={ backdrop_path }
-        release_date={ release_date }
-        overview={ overview }
-        genres={ genres }
-        runtime={ runtime }
-        tagline={ tagline }
-        average_rating={ average_rating }
+        // id={ id }
+        // title={ title }
+        // backdrop_path={ backdrop_path }
+        // release_date={ release_date }
+        // overview={ overview }
+        // genres={ genres }
+        // runtime={ runtime }
+        // tagline={ tagline }
+        // average_rating={ average_rating }
+        selectedMovie={this.state.selectedMovie}
       />
     } else {
       view = <Gallery
