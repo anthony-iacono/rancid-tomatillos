@@ -13,7 +13,7 @@ class App extends Component {
     userID: '1',
     userName: '',
     movies: [],
-    selectedMovieID: 1
+    selectedMovieID: 0
   }
 
   componentDidMount = () => {
@@ -45,25 +45,30 @@ class App extends Component {
   }
 
   render() {
+    let view;
+    if (!this.state.userID) {
+      view = <LoginForm
+      handleChange={this.handleChange}
+      handleSubmit={this.handleSubmit}
+      email={this.state.email}
+      password={this.state.password}
+      />
+    } else if (this.state.selectedMovieID) {
+      view = <Details />
+    } else {
+      view = <Gallery movies={ this.state.movies }/>
+    }
+
+    // figure out passing details from fetch into details' props
+    // avoid nested ternary, swithc statement instead?
+
     return (
       <>
         <header>
           <h1>RaNcId ToMaTiLlOs</h1>
         </header>
         <main>
-          { !this.state.userID
-            ? <LoginForm
-              handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
-              email={this.state.email}
-              password={this.state.password}
-            />
-            : (
-              this.state.selectedMovieID
-              ? <Details />
-              : <Gallery movies={ this.state.movies }/>
-            )
-          }
+          {view}
         </main>
         <footer>
           <h5>© 2021</h5>
