@@ -2,24 +2,24 @@ import React from 'react'
 
 const LoginForm = ({ handleChange, handleSubmit, email, password }) => {
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <input
         type='text'
         placeholder='email'
         name='email'
         value={email}
-        required
         onChange={handleChange}
+        required
       />
       <input
         type='text'
         placeholder='password'
         name='password'
         value={password}
-        required
         onChange={handleChange}
+        required
       />
-      <button onClick={handleSubmit}>Log in</button>
+      <button>Log in</button>
     </form>
   )
 }

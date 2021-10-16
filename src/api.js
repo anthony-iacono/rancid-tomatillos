@@ -1,19 +1,23 @@
 const api = {
-  getUser() {
+  getUser(email, password) {
     fetch('https://rancid-tomatillos.herokuapp.com/api/v2/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-          email: 'sam@turing.io',
-          password: '123456'
+          email: email,
+          password: password
         })
     })
-      .then(json => json.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Holy mackerel! Are your creds correct?')
+        }
+        return response.json()
+      })
       .then(data => data.user)
-      .then(val => console.log(val))
-      .catch(error => console.warn(error.error))
+      .catch(error => console.log(error))
   }
 }
 

@@ -38,7 +38,7 @@ class App extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    api.getUser()
+    api.getUser(this.state.email, this.state.password)
     // fetch("https://rancid-tomatillos.herokuapp.com/api/v2/login", {
     //   method: "POST",
     //   headers: {
