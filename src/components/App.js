@@ -14,7 +14,8 @@ class App extends Component {
     userID: '',
     userName: '',
     movies: [],
-    selectedMovie: null
+    selectedMovie: null,
+    error: ''
   }
 
   componentDidMount = () => {
@@ -45,6 +46,11 @@ class App extends Component {
       .then(({user: {id, name}}) => {
         this.setState({ userID: id, userName: name })
       })
+      .catch(error => {
+        // console.log(error.message)
+        this.setState({error: error.message})
+        // console.log(this.state.error)
+      })
   }
 
   render() {
@@ -55,6 +61,7 @@ class App extends Component {
         handleSubmit={this.handleSubmit}
         email={this.state.email}
         password={this.state.password}
+        error={this.state.error}
       />
     } else if (this.state.selectedMovie) {
       view = <Details

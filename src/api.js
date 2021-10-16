@@ -13,12 +13,12 @@ const api = {
       .then(response => {
         if (!response.ok) {
           throw new Error('Holy mackerel! Are your creds correct?')
+        } else if (response.status >= 500) {
+          throw new Error('TeChNiCaL dIfFiCuLtIeS')
         }
         return response.json()
       })
-      // .then(data => data.user)
-      // .then(data => console.log(data))
-      .catch(error => console.log(error))
+      // .catch(error => this.setState({error: error}))
   }
 }
 
