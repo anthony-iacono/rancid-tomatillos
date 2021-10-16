@@ -73,9 +73,6 @@ class App extends Component {
       />
     }
 
-    // figure out passing details from fetch into details' props
-    // avoid nested ternary, switch statement instead?
-
     return (
       <>
         <header>
