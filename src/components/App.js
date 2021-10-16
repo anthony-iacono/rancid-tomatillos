@@ -9,12 +9,11 @@ import movieData from '../data/movieData'
 
 class App extends Component {
   state = {
-    email: '',
-    password: '',
+    email: 'sam@turing.io',
+    password: '123456',
     userID: '',
     userName: '',
     movies: [],
-    selectedMovieID: 0,
     selectedMovie: null
   }
 
@@ -31,6 +30,10 @@ class App extends Component {
 
   }
 
+  backToGallery = () => {
+    this.setState({ selectedMovie: null })
+  }
+
   handleChange = (event) => {
     const { name, value } = event.target
     this.setState({ [name]: value })
@@ -39,21 +42,9 @@ class App extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     api.getUser(this.state.email, this.state.password)
-    // fetch("https://rancid-tomatillos.herokuapp.com/api/v2/login", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: {
-    //     "email": "fake@email.com",
-    //     "password": "password"
-    //   }
-    // })
-    // .then(response => response.json())
-    // .then({user: {id, name}} => {
-    //   this.setState({ userID: id, userName: name })
-    // })
-    // .catch({error} => console.warn(error))
+      .then(({user: {id, name}}) => {
+        this.setState({ userID: id, userName: name })
+      })
   }
 
   render() {
@@ -68,6 +59,7 @@ class App extends Component {
     } else if (this.state.selectedMovie) {
       view = <Details
         selectedMovie={this.state.selectedMovie}
+        backToGallery={this.backToGallery}
       />
     } else {
       view = <Gallery
