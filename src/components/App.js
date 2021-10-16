@@ -4,13 +4,14 @@ import '../styles/App.css'
 import LoginForm from './LoginForm'
 import Gallery from './Gallery'
 import Details from './Details'
+import api from '../api'
 import movieData from '../data/movieData'
 
 class App extends Component {
   state = {
     email: '',
     password: '',
-    userID: '1',
+    userID: '',
     userName: '',
     movies: [],
     selectedMovieID: 0,
@@ -35,7 +36,9 @@ class App extends Component {
     this.setState({ [name]: value })
   }
 
-  handleSubmit = () => {
+  handleSubmit = (event) => {
+    event.preventDefault()
+    api.getUser()
     // fetch("https://rancid-tomatillos.herokuapp.com/api/v2/login", {
     //   method: "POST",
     //   headers: {
