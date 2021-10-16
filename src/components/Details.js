@@ -11,7 +11,7 @@ const Details = ({selectedMovie: { id, title, poster_path, release_date, overvie
       <p>{genres}</p>
       <p>{runtime}</p>
       <p>{tagline}</p>
-      <p>{average_rating}</p>
+      <p>{`${Math.round(average_rating * 10)}%`}</p>
       <button onClick={backToGallery}>Back</button>
     </section>
   )
