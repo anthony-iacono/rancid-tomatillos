@@ -6,7 +6,6 @@ describe('Rancid Tomatillos login flows', () => {
   it('Should be able to visit the page and render the correct elements', () => {
     cy.visit('http://localhost:3000')
       .contains('RaNcId ToMaTiLlOs')
-      .get('form')
-        .should('have.name', 'email')
+      .get('input[type="email"]')
   })
 });

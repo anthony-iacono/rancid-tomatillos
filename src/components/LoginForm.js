@@ -4,7 +4,7 @@ const LoginForm = ({ handleChange, handleSubmit, email, password, error }) => {
   return (
     <form onSubmit={handleSubmit}>
       <input
-        type='text'
+        type='email'
         placeholder='email'
         name='email'
         value={email}
@@ -12,7 +12,7 @@ const LoginForm = ({ handleChange, handleSubmit, email, password, error }) => {
         required
       />
       <input
-        type='text'
+        type='password'
         placeholder='password'
         name='password'
         value={password}
