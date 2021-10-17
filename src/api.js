@@ -22,6 +22,7 @@ const api = {
         this.checkResponse(response, 'Are you connected to the interwebz?')
         return response.json()
       })
+      // .catch(error => console.log(error))
   },
 
   getSingleMovie(movieID) {

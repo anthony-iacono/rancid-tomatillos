@@ -20,7 +20,6 @@ const LoginForm = ({ handleChange, handleSubmit, email, password, error }) => {
         required
       />
       <button>Log in</button>
-
     </form>
   )
 }
