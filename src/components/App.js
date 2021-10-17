@@ -27,8 +27,24 @@ class App extends Component {
   }
 
   displayDetails = (id) => {
-    api.getSingleMovie(id)
-      .then(({ movie }) => this.setState({ selectedMovie: movie }))
+    let selectedMovie;
+    Promise.all([
+      api.getSingleMovie(id),
+      api.getSingleMovieVideos(id)
+    ])
+      .then(([{ movie }, { videos }]) => {
+        selectedMovie = movie
+        selectedMovie.videos = videos
+        this.setState(this.setState({ selectedMovie: selectedMovie }))
+      })
+
+    // api.getSingleMovie(id)
+    //   .then(({ movie }) => selectedMovie = selectedMovie: movie }))
+    //   // .then(({ movie }) => this.setState({ selectedMovie: movie }))
+    //
+    // api.getSingleMovieVideos(id) {
+    //   .then(({ videos }) => this.setState({ selectedMovie movie }))
+    // }
   }
 
   backToGallery = () => {

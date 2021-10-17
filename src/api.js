@@ -42,7 +42,19 @@ const api = {
         }
         return response.json()
       })
-  }
+  },
+
+  getSingleMovieVideos(movieID) {
+    return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieID}/videos`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Are you connected to the interwebz?')
+        } else if (response.status >= 500) {
+          throw new Error('TeChNiCaL dIfFiCuLtIeS')
+        }
+        return response.json()
+      })
+  },
 }
 
 export default api
