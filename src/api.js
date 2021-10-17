@@ -11,11 +11,7 @@ const api = {
         })
     })
       .then(response => {
-        if (!response.ok) {
-          throw new Error('Holy mackerel! Are your creds correct?')
-        } else if (response.status >= 500) {
-          throw new Error('TeChNiCaL dIfFiCuLtIeS')
-        }
+        this.checkResponse(response, 'Holy mackerel! Are your creds correct?')
         return response.json()
       })
   },
@@ -23,11 +19,7 @@ const api = {
   getAllMovies() {
     return fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
       .then(response => {
-        if (!response.ok) {
-          throw new Error('Are you connected to the interwebz?')
-        } else if (response.status >= 500) {
-          throw new Error('TeChNiCaL dIfFiCuLtIeS')
-        }
+        this.checkResponse(response, 'Are you connected to the interwebz?')
         return response.json()
       })
   },
@@ -35,11 +27,7 @@ const api = {
   getSingleMovie(movieID) {
     return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieID}`)
       .then(response => {
-        if (!response.ok) {
-          throw new Error('Are you connected to the interwebz?')
-        } else if (response.status >= 500) {
-          throw new Error('TeChNiCaL dIfFiCuLtIeS')
-        }
+        this.checkResponse(response, 'Are you connected to the interwebz?')
         return response.json()
       })
   },
@@ -47,14 +35,20 @@ const api = {
   getSingleMovieVideos(movieID) {
     return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieID}/videos`)
       .then(response => {
-        if (!response.ok) {
-          throw new Error('Are you connected to the interwebz?')
-        } else if (response.status >= 500) {
-          throw new Error('TeChNiCaL dIfFiCuLtIeS')
-        }
+        this.checkResponse(response, 'Are you connected to the interwebz?')
         return response.json()
       })
   },
+
+  checkResponse(response, message) {
+    if (!response.ok) {
+      if (response.status >= 500) {
+        throw new Error('TeChNiCaL dIfFiCuLtIeS')
+      } else {
+        throw new Error(message)
+      }
+    }
+  }
 }
 
 export default api
