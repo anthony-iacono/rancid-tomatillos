@@ -5,7 +5,6 @@ import LoginForm from './LoginForm'
 import Gallery from './Gallery'
 import Details from './Details'
 import api from '../api'
-import movieData from '../data/movieData'
 
 class App extends Component {
   state = {
