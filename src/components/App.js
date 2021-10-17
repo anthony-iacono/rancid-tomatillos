@@ -34,17 +34,9 @@ class App extends Component {
     ])
       .then(([{ movie }, { videos }]) => {
         selectedMovie = movie
-        selectedMovie.videos = videos
+        selectedMovie.videos = videos[0]
         this.setState(this.setState({ selectedMovie: selectedMovie }))
       })
-
-    // api.getSingleMovie(id)
-    //   .then(({ movie }) => selectedMovie = selectedMovie: movie }))
-    //   // .then(({ movie }) => this.setState({ selectedMovie: movie }))
-    //
-    // api.getSingleMovieVideos(id) {
-    //   .then(({ videos }) => this.setState({ selectedMovie movie }))
-    // }
   }
 
   backToGallery = () => {
