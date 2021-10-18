@@ -1,4 +1,5 @@
 import React from 'react'
+import '../styles/LoginForm.css'
 
 const LoginForm = ({ handleChange, handleSubmit, email, password, error }) => {
   return (
