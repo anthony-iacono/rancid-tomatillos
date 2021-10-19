@@ -4,53 +4,60 @@ import '../styles/App.css'
 import LoginForm from './LoginForm'
 import Gallery from './Gallery'
 import Details from './Details'
-import movieData from '../data/movieData'
+import api from '../api'
 
 class App extends Component {
   state = {
+    // email: 'sam@turing.io',
+    // password: '123456',
     email: '',
     password: '',
-    userID: '1',
+    userID: '',
     userName: '',
     movies: [],
-    selectedMovieID: 0,
-    selectedMovie: null
+    selectedMovie: null,
+    error: ''
   }
 
   componentDidMount = () => {
-    // fetch('')
-    this.setState({ movies: movieData.movies })
+    api.getAllMovies()
+      .then(({movies}) => this.setState({ movies: movies }))
+      .catch(error => {
+        this.setState({error: error.message})
+      })
   }
 
   displayDetails = (id) => {
-    const selectedMovie = movieData.movies.find(movie =>
-      movie.id === id
-    )
-    this.setState({ selectedMovie: selectedMovie })
+    let selectedMovie;
+    Promise.all([
+      api.getSingleMovie(id),
+      api.getSingleMovieVideos(id)
+    ])
+      .then(([{ movie }, { videos }]) => {
+        selectedMovie = movie
+        selectedMovie.videos = videos[0]
+        this.setState(this.setState({ selectedMovie: selectedMovie }))
+      })
+  }
 
+  backToGallery = () => {
+    this.setState({ selectedMovie: null })
   }
 
   handleChange = (event) => {
     const { name, value } = event.target
-    this.setState({ [name]: value })
+    this.setState({ [name]: value, error: '' })
   }
 
-  handleSubmit = () => {
-    // fetch("https://rancid-tomatillos.herokuapp.com/api/v2/login", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: {
-    //     "email": "fake@email.com",
-    //     "password": "password"
-    //   }
-    // })
-    // .then(response => response.json())
-    // .then({user: {id, name}} => {
-    //   this.setState({ userID: id, userName: name })
-    // })
-    // .catch({error} => console.warn(error))
+  handleSubmit = (event) => {
+    event.preventDefault()
+    api.getUser(this.state.email, this.state.password)
+      .then(({user: {id, name}}) => {
+        this.setState({ userID: id, userName: name })
+      })
+      .catch(error => {
+        this.setState({error: error.message})
+      })
   }
 
   render() {
@@ -61,10 +68,12 @@ class App extends Component {
         handleSubmit={this.handleSubmit}
         email={this.state.email}
         password={this.state.password}
+        error={this.state.error}
       />
     } else if (this.state.selectedMovie) {
       view = <Details
         selectedMovie={this.state.selectedMovie}
+        backToGallery={this.backToGallery}
       />
     } else {
       view = <Gallery
@@ -79,6 +88,7 @@ class App extends Component {
           <h1>RaNcId ToMaTiLlOs</h1>
         </header>
         <main>
+          {this.state.error && <p>{this.state.error}</p>}
           {view}
         </main>
         <footer>

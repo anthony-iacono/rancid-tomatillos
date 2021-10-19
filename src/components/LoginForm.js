@@ -1,25 +1,26 @@
 import React from 'react'
+import '../styles/LoginForm.css'
 
-const LoginForm = ({ handleChange, handleSubmit, email, password }) => {
+const LoginForm = ({ handleChange, handleSubmit, email, password, error }) => {
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <input
-        type='text'
+        type='email'
         placeholder='email'
         name='email'
         value={email}
-        required
         onChange={handleChange}
+        required
       />
       <input
-        type='text'
+        type='password'
         placeholder='password'
         name='password'
         value={password}
-        required
         onChange={handleChange}
+        required
       />
-      <button onClick={handleSubmit}>Log in</button>
+      <button>Log in</button>
     </form>
   )
 }
