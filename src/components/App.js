@@ -5,6 +5,7 @@ import LoginForm from './LoginForm'
 import Gallery from './Gallery'
 import Details from './Details'
 import api from '../api'
+import { Route } from 'react-router-dom'
 
 class App extends Component {
   state = {
@@ -62,15 +63,20 @@ class App extends Component {
 
   render() {
     let view;
-    if (!this.state.userID) {
+    <Route exact path='/login' render={() =>
       view = <LoginForm
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
         email={this.state.email}
         password={this.state.password}
+        userID={this.state.userID}
         error={this.state.error}
       />
-    } else if (this.state.selectedMovie) {
+    } />
+
+
+
+    if (this.state.selectedMovie) {
       view = <Details
         selectedMovie={this.state.selectedMovie}
         backToGallery={this.backToGallery}
