@@ -1,5 +1,5 @@
 describe('Gallery', () => {
-  beforeEach(() => {
+  before(() => {
     cy.visit('http://localhost:3000')
       .get('input[type="email"]').type('sam@turing.io')
       .get('input[type="password"]').type('123456')
@@ -36,9 +36,11 @@ describe('Gallery', () => {
         }
       }
     })
+    .get('.movie-card').first().click()
+    // .url().should('include', '/movie/694919')
   })
 
-  it('should show additional info when a card is hovered over', () => {
+  it.skip('should show additional info when a card is hovered over', () => {
 
   })
 })
