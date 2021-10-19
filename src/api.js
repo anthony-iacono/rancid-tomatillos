@@ -11,7 +11,7 @@ const api = {
         })
     })
       .then(response => {
-        this.checkResponse(response, 'Holy mackerel! Are your creds correct?')
+        this.checkResponse(response, 'Sorry, we can\'t find an account with these credentials. Please try again.')
         return response.json()
       })
   },

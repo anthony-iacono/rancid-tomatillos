@@ -8,8 +8,10 @@ import api from '../api'
 
 class App extends Component {
   state = {
-    email: 'sam@turing.io',
-    password: '123456',
+    // email: 'sam@turing.io',
+    // password: '123456',
+    email: '',
+    password: '',
     userID: '',
     userName: '',
     movies: [],
