@@ -7,8 +7,8 @@ describe('Gallery', () => {
   })
 
   it('should display the proper URL when the Gallery is visited', () => {
-    // cy.url().should('include', '/gallery')
     cy.get('#gallery')
+    // cy.url().should('include', '/gallery')
   })
 
   it('should display movie cards within the gallery', () => {
