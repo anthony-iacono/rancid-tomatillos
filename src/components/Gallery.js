@@ -1,6 +1,8 @@
 import React from 'react'
 import Card from './Card'
 
+import '../styles/Gallery.css'
+
 const Gallery = ({ movies, displayDetails }) => {
  // || 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'
   const movieCards = movies.map(movie => <Card
