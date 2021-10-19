@@ -1,4 +1,5 @@
-.movie-card {
-  height: 300px;
-  width: 300px;
+.movie-card,
+img {
+  height: 15rem;
+  width: 10rem;
 }
