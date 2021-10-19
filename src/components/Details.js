@@ -16,7 +16,10 @@ const Details = ({
   backToGallery
 }) => {
   return (
-    <section style={{backgroundImage: `url(${poster_path})`}}>
+    <section
+      className="details"
+      style={{backgroundImage: `url(${poster_path})`}}
+    >
       <h1>Details</h1>
       <p>{title}</p>
       <p>{release_date}</p>
