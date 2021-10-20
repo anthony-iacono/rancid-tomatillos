@@ -91,12 +91,12 @@ class App extends Component {
               <Redirect to='/gallery'/>
               <Route
                 exact path='/gallery'
-                render={() =>
-                  <Gallery
+                render={() => {
+                  return <Gallery
                     movies={ this.state.movies }
                     displayDetails={ this.displayDetails }
-                    />
-                }
+                  />
+                }}
             />
 
             <Route
