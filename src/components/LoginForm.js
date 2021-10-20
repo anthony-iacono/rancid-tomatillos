@@ -21,9 +21,7 @@ const LoginForm = ({ handleChange, handleSubmit, email, password, userID, error 
         onChange={handleChange}
         required
       />
-      <Link to={ userID && '/gallery' }>
         <button>Log in</button>
-      </Link>
     </form>
   )
 }

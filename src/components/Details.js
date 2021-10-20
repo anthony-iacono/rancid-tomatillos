@@ -1,10 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Details = ({
   selectedMovie: {
     id,
     title,
-    poster_path,
+    backdrop_path,
     release_date,
     overview,
     genres,
@@ -18,7 +19,7 @@ const Details = ({
   return (
     <section
       className="details"
-      style={{backgroundImage: `url(${poster_path})`}}
+      style={{backgroundImage: `url(${backdrop_path})`}}
     >
       <h1>Details</h1>
       <p>{title}</p>
@@ -37,7 +38,9 @@ const Details = ({
         allowFullScreen
         title="Embedded youtube"
       />
-      <button onClick={backToGallery}>Back</button>
+      <Link to='/gallery' onClick={backToGallery}>
+        <button>Back</button>
+      </Link>
     </section>
   )
 }
