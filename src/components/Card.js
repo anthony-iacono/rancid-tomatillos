@@ -1,16 +1,21 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 import '../styles/Card.css'
 
 const Card = ({ id, poster, rating, release, displayDetails }) => {
   return (
-    <article
-      className='movie-card'
-      onClick={ () => displayDetails(id) }
+    <Link to={`/${id}`}
+    /*onClick={ () => displayDetails(id) }*/
     >
-      <img src={poster || 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'} alt=''/>
-      <p>{rating}</p>
-      <p>{release}</p>
-    </article>
+      <article
+        className='movie-card'
+      >
+        <img src={poster || 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'} alt=''/>
+        <p>{rating}</p>
+        <p>{release}</p>
+      </article>
+    </Link>
   )
 }
 

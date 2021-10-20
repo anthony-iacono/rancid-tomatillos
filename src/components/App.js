@@ -5,14 +5,14 @@ import LoginForm from './LoginForm'
 import Gallery from './Gallery'
 import Details from './Details'
 import api from '../api'
-import { Route } from 'react-router-dom'
+import { Route, Redirect, Switch } from 'react-router-dom'
 
 class App extends Component {
   state = {
-    // email: 'sam@turing.io',
-    // password: '123456',
-    email: '',
-    password: '',
+    email: 'sam@turing.io',
+    password: '123456',
+    // email: '',
+    // password: '',
     userID: '',
     userName: '',
     movies: [],
@@ -29,6 +29,7 @@ class App extends Component {
   }
 
   displayDetails = (id) => {
+    console.log("Display details for " + id)
     let selectedMovie;
     Promise.all([
       api.getSingleMovie(id),
@@ -42,7 +43,7 @@ class App extends Component {
   }
 
   backToGallery = () => {
-    this.setState({ selectedMovie: null })
+    // this.setState({ selectedMovie: null })
   }
 
   handleChange = (event) => {
@@ -62,32 +63,6 @@ class App extends Component {
   }
 
   render() {
-    let view;
-    <Route exact path='/login' render={() =>
-      view = <LoginForm
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}
-        email={this.state.email}
-        password={this.state.password}
-        userID={this.state.userID}
-        error={this.state.error}
-      />
-    } />
-
-
-
-    if (this.state.selectedMovie) {
-      view = <Details
-        selectedMovie={this.state.selectedMovie}
-        backToGallery={this.backToGallery}
-      />
-    } else {
-      view = <Gallery
-        movies={ this.state.movies }
-        displayDetails={ this.displayDetails }
-      />
-    }
-
     return (
       <>
         <header>
@@ -95,7 +70,63 @@ class App extends Component {
         </header>
         <main>
           {this.state.error && <p>{this.state.error}</p>}
-          {view}
+          {!this.state.userID
+            ? <>
+            <Redirect to='/login'/>
+            <Route
+              exact path='/login'
+              render={() =>
+                <LoginForm
+                  handleChange={this.handleChange}
+                  handleSubmit={this.handleSubmit}
+                  email={this.state.email}
+                  password={this.state.password}
+                  userID={this.state.userID}
+                  error={this.state.error}
+                />
+              }
+            />
+            </>
+            : <>
+            <Redirect to='/gallery'/>
+            <Switch>
+              <Route
+                exact path='/gallery'
+                render={() =>
+                  <Gallery
+                    movies={ this.state.movies }
+                    /*displayDetails={ this.displayDetails }*/
+                    />
+                }
+              />
+
+              <Route
+                exact path='/:id'
+                render={ ({match}) => {
+                  const id = match.params.id
+                  Promise.all([
+                    api.getSingleMovie(id),
+                    api.getSingleMovieVideos(id)
+                  ])
+                  .then(([{ movie }, { videos }]) => {
+                    const selectedMovie = movie
+                    selectedMovie.videos = videos[0]
+                    return <Details
+                    /*selectedMovie={this.state.selectedMovie}*/
+                      selectedMovie={selectedMovie}
+                      backToGallery={this.backToGallery}
+                    />
+                    /*this.setState(this.setState({ selectedMovie: selectedMovie }))*/
+                  })
+                  .catch(error => console.log(error))
+                  /*(this.state.selectedMovie &&*/
+                  }
+                }
+              />
+            </Switch>
+            </>
+          }
+
         </main>
         <footer>
           <h5>© 2021</h5>

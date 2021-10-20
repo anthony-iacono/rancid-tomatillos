@@ -11,7 +11,7 @@ const Gallery = ({ movies, displayDetails }) => {
     poster={movie.poster_path}
     rating={`${Math.round(movie.average_rating * 10)}%`}
     release={movie.release_date}
-    displayDetails={ displayDetails }
+    /*displayDetails={ displayDetails }*/
   />)
 
   return (
