@@ -13,7 +13,7 @@ class App extends Component {
     password: '123456',
     // email: '',
     // password: '',
-    userID: '',
+    userID: 0,
     userName: '',
     movies: [],
     selectedMovie: null,
