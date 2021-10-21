@@ -1,4 +1,6 @@
-//
+// Rember to parseInt id strings so they are numbers when sent to backend
+
+
 //   componentDidMount = () => {
 //     api.getAllMovies()
 //       .then(({movies}) => this.setState({ movies: movies }))
