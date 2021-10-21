@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import MovieCard from './MovieCard'
-import api from '../api'
-
-import '../styles/Gallery.css'
+import MovieCard from '../MovieCard/MovieCard'
+import api from '../../api'
+import './Gallery.css'
 
 class Gallery extends Component {
   state = {
@@ -12,7 +11,7 @@ class Gallery extends Component {
   componentDidMount() {
     api.getAllMovies()
       .then(movies => this.setState({
-        movies: movies.map(movie => <MovieCard key={ movie.id } { ...movie } />) 
+        movies: movies.map(movie => <MovieCard key={ movie.id } { ...movie } />)
       }))
   }
 
@@ -24,8 +23,5 @@ class Gallery extends Component {
     )
   }
 }
-
-
-
 
 export default Gallery
