@@ -1,24 +1,31 @@
-import React from 'react'
-import Card from './Card'
+import React, { Component } from 'react'
+import MovieCard from './MovieCard'
+import api from '../api'
 
 import '../styles/Gallery.css'
 
-const Gallery = ({ movies, displayDetails }) => {
- // || 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'
-  const movieCards = movies.map(movie => <Card
-    key={movie.id}
-    id={movie.id}
-    poster={movie.poster_path}
-    rating={`${Math.round(movie.average_rating * 10)}%`}
-    release={movie.release_date}
-    /*displayDetails={ displayDetails }*/
-  />)
+class Gallery extends Component {
+  state = {
+    movies: []
+  }
 
-  return (
-    <section id='gallery'>
-      {movieCards}
-    </section>
-  )
+  componentDidMount() {
+    api.getAllMovies()
+      .then(movies => this.setState({
+        movies: movies.map(movie => <MovieCard key={ movie.id } { ...movie } />) 
+      }))
+  }
+
+  render() {
+    return (
+      <section className='gallery'>
+        { this.state.movies }
+      </section>
+    )
+  }
 }
+
+
+
 
 export default Gallery
