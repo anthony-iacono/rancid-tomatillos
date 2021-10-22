@@ -5,6 +5,12 @@
   display: none;
 }
 
+:-webkit-any-link {
+    color: inherit;
+    cursor: pointer;
+    text-decoration: none;
+}
+
 html {
   font-size: 1vw;
   width: 100vw;
