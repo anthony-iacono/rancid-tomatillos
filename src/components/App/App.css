@@ -12,6 +12,10 @@ h5 {
   margin: 0;
 }
 
+h1:hover {
+  transform: scale(1.025);
+}
+
 header,
 footer {
   z-index: 1;
