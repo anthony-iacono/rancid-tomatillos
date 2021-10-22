@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './App.css'
 import Gallery from '../Gallery/Gallery'
 import MovieDetails from '../MovieDetails/MovieDetails'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Link } from 'react-router-dom'
 
 class App extends Component {
 
@@ -10,7 +10,9 @@ class App extends Component {
     return (
       <>
         <header>
-          <h1>CinemaCentral</h1>
+          <Link to='/' >
+            <h1>CinemaCentral</h1>
+          </Link>
         </header>
         <main>
           <Switch>
