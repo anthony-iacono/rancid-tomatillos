@@ -50,14 +50,17 @@ class MovieDetails extends Component {
           className="details"
           style={{backgroundImage: `url(${this.state.movie.backdrop_path})`}}
         >
-          <h2>{movie.title} ({this.formatReleaseDate()})</h2>
-          <h3>"{movie.tagline}"</h3>
-          <p>{movie.overview}</p>
-          <h4>{this.formatGenres()} - {movie.runtime} minutes - {this.formatRating()} rating</h4>
-          <p></p>
-          <Link to='/'>
-            <button>Home</button>
-          </Link>
+          <article className="details-wrapper">
+            <div className="heading">
+              <h2>{movie.title} ({this.formatReleaseDate()})</h2>
+            {movie.tagline && <h3>{`${movie.tagline}`}</h3>}
+            </div>
+            <p>{movie.overview}</p>
+            <h4>{this.formatGenres()} - {movie.runtime} minutes - {this.formatRating()} rating</h4>
+            <Link to='/'>
+              <button>Home</button>
+            </Link>
+          </article>
         </section>
       </section>
     )
