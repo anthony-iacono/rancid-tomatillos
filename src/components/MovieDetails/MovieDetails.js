@@ -38,9 +38,8 @@ class MovieDetails extends Component {
   }
 
   formatRating() {
-    const { movie } = this.state;
-    const { averageRating } = movie;
-    return Math.round(movie.average_rating * 10) + "%";
+    const { movie: { average_rating } } = this.state;
+    return Math.round(average_rating * 10) + "%";
   }
 
   formatGenres() {
