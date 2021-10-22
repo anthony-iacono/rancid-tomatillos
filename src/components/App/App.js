@@ -21,6 +21,7 @@ class App extends Component {
             <Route path='*'>
               <p>The page you are looking for doesn't exist</p>
             </Route>
+
           </Switch>
         </main>
         <footer>
