@@ -1,5 +1,14 @@
+/* @import-normalize; */
+@import '_reset.css';
+
 ::-webkit-scrollbar {
   display: none;
+}
+
+:-webkit-any-link {
+    color: inherit;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 html {

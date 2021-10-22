@@ -5,7 +5,9 @@ import './Gallery.css'
 
 class Gallery extends Component {
   state = {
-    movies: []
+    movies: [],
+    error: '',
+    status: ''
   }
 
   componentDidMount() {
@@ -13,6 +15,9 @@ class Gallery extends Component {
       .then(movies => this.setState({
         movies: movies.map(movie => <MovieCard key={ movie.id } { ...movie } />)
       }))
+      .catch(error => {
+        this.setState({ error: error, status: 'error'})
+      })
   }
 
   render() {
