@@ -29,9 +29,12 @@ class MovieDetails extends Component {
   }
 
   formatReleaseDate() {
-    const { movie } = this.state;
-    const [ year, month, day ] = movie.release_date.split("-")
-    return `${month} ${day} ${year}`
+    const { movie: {release_date } } = this.state;
+    return new Date(release_date).toLocaleString('en-us', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    })
   }
 
   formatRating() {
