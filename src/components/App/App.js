@@ -8,11 +8,21 @@ import MovieDetails from '../MovieDetails/MovieDetails'
 import './App.css'
 
 class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      searchTerms: ''
+    }
+  }
+
+  handleChange = event => {
+    this.setState({ searchTerms: event.target.value })
+  }
 
   render() {
     return (
       <>
-        <Header />
+        <Header handleChange={this.handleChange} searchTerms={ this.state.searchTerms }/>
         <main>
           <Switch>
             <Route exact path='/' render={ () => <Gallery /> } />
