@@ -12,10 +12,10 @@ const MovieCard = ({ id, title, poster_path, average_rating, release_date }) => 
         <div className='text-overlay'>
           <h2>{title}</h2>
           <p>Average Rating:
-            <span className="yellow">{average_rating.toFixed(1)} / 10</span>
+            <span className="yellow">{" " + average_rating.toFixed(1)} / 10</span>
           </p>
           <p>Released:
-            <span className="yellow">{release_date}</span>
+            <span className="yellow">{" " + release_date}</span>
           </p>
         </div>
       </article>

@@ -69,7 +69,7 @@ class MovieDetails extends Component {
                   <h2>{movie.title} ({this.formatReleaseDate()})</h2>
                   {movie.tagline && <h3>{`${movie.tagline}`}</h3>}
                 </div>
-                <p>{movie.overview}</p>
+                <p className="overview">{movie.overview}</p>
                 <h4>{this.formatGenres()} - {movie.runtime} minutes - {movie.average_rating.toFixed(1)} / 10 rating</h4>
                 <Link to='/'>
                   <button>Home</button>
