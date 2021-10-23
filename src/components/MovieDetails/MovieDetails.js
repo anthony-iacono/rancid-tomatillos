@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import YouTubeVideo from '../YouTubeVideo/YouTubeVideo'
 import api from '../../api'
 import './MovieDetails.css'
+import placeholder from '../../assets/placeholder.png'
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -37,12 +38,15 @@ class MovieDetails extends Component {
     })
   }
 
+<<<<<<< HEAD
   formatRating() {
     const { movie } = this.state;
     const { averageRating } = movie;
     return Math.round(movie.average_rating * 10) + "%";
   }
 
+=======
+>>>>>>> 4a0a33d49f8ab6e8bc71c9a1e779758321099c80
   formatGenres() {
     const { movie } = this.state;
     return movie.genres.join("/");
@@ -51,6 +55,7 @@ class MovieDetails extends Component {
   render() {
     const status = this.state.status
     const { movie, videos } = this.state;
+
     return (
       <>
         {status === 'loading' && <h1 className='message'>Loading</h1>}
@@ -60,15 +65,26 @@ class MovieDetails extends Component {
             <YouTubeVideo videoKey={videos[videos.length - 1].key}/>
             <section
               className="details"
-              style={{backgroundImage: `url(${this.state.movie.backdrop_path})`}}
+              style={{
+                backgroundImage: `url(${
+                  movie.backdrop_path
+                    ? movie.backdrop_path
+                    : placeholder
+                  })`
+                }}
             >
               <article className="details-wrapper">
                 <div className="heading">
                   <h2>{movie.title} ({this.formatReleaseDate()})</h2>
                   {movie.tagline && <h3>{`${movie.tagline}`}</h3>}
                 </div>
+<<<<<<< HEAD
                 <p class="overview">{movie.overview}</p>
                 <h4>{this.formatGenres()} - {movie.runtime} minutes - {this.formatRating()} rating</h4>
+=======
+                <p>{movie.overview}</p>
+                <h4>{this.formatGenres()} - {movie.runtime} minutes - {movie.average_rating.toFixed(1)} / 10 rating</h4>
+>>>>>>> 4a0a33d49f8ab6e8bc71c9a1e779758321099c80
                 <Link to='/'>
                   <button>Home</button>
                 </Link>
