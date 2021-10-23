@@ -1,33 +1,3 @@
-header {
-  height: 7rem;
-  font-family: 'Bangers', cursive;
-  font-size: 6rem;
-  top: 0;
-  color: #FFC847;
-  text-shadow: 2px 2px #474747;
-}
-
-h1,
-h5 {
-  margin: 0;
-}
-
-h1:hover {
-  transform: scale(1.025);
-}
-
-header,
-footer {
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  width: 100%;
-  /* height: 6rem; */
-  background-color: #2211B9;
-}
-
 main {
   z-index: 0;
   height: 100%;
@@ -43,10 +13,19 @@ footer {
   bottom: 0;
   height: 3.5rem;
   font-family: 'Permanent Marker', cursive;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  /* height: 6rem; */
+  background-color: #2211B9;
 }
 
 h5 {
   font-size: 1.5rem;
   color: #FFC847;
   text-shadow: 2px 2px #474747;
+  margin: 0;
 }

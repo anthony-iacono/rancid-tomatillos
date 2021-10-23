@@ -38,8 +38,9 @@ class MovieDetails extends Component {
   }
 
   formatRating() {
-    const { movie: { average_rating } } = this.state;
-    return Math.round(average_rating * 10) + "%";
+    const { movie } = this.state;
+    const { averageRating } = movie;
+    return Math.round(movie.average_rating * 10) + "%";
   }
 
   formatGenres() {
@@ -66,7 +67,7 @@ class MovieDetails extends Component {
                   <h2>{movie.title} ({this.formatReleaseDate()})</h2>
                   {movie.tagline && <h3>{`${movie.tagline}`}</h3>}
                 </div>
-                <p>{movie.overview}</p>
+                <p class="overview">{movie.overview}</p>
                 <h4>{this.formatGenres()} - {movie.runtime} minutes - {this.formatRating()} rating</h4>
                 <Link to='/'>
                   <button>Home</button>
