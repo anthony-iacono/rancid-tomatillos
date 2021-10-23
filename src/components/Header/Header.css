@@ -16,7 +16,7 @@
   }
 }
 
-@keyframes levitate{
+@keyframes levitate {
   0% {
     transform: translateY(2px);
   }
@@ -46,6 +46,11 @@ header {
   /* background-size: cover; */
 }
 
+.title-with-logo {
+  display: flex;
+  align-items: center;
+}
+
 h1 {
   margin: 0;
   padding: 0 1rem;
@@ -56,6 +61,12 @@ h1 {
 
 h1:hover {
   transform: scale(1.025);
+}
+
+.clippy {
+  width: 8rem;
+  height: 8rem;
+  animation: levitate 1s infinite;
 }
 
 .search {
