@@ -1,0 +1,39 @@
+@keyframes unroll {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.search {
+  display: flex;
+  width: 25rem;
+  filter: invert();
+}
+
+.search-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 1rem;
+  /* filter: invert(); */
+}
+
+.search-icon:hover {
+  transform: scale(1.025);
+  cursor: pointer;
+}
+
+.search-bar {
+  display: none;
+  width: 100%;
+  padding: 0 1rem;
+  font-size: 1rem;
+  /* transition: all 0.3s ease-in-out; */
+}
+
+.active {
+  display: block;
+  animation: unroll 1s;
+}
