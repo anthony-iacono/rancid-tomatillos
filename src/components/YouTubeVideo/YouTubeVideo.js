@@ -3,7 +3,7 @@ import './YouTubeVideo.css';
 const YouTubeVideo = ({ videoKey }) => {
   return (
     <iframe
-      key={Date.now()}
+      key={videoKey}
       width="853"
       height="480"
       src={`https://www.youtube.com/embed/${videoKey}`}

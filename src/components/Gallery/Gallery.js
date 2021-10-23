@@ -7,24 +7,31 @@ class Gallery extends Component {
   state = {
     movies: [],
     error: '',
-    status: ''
+    status: 'loading'
   }
 
   componentDidMount() {
     api.getAllMovies()
-      .then(movies => this.setState({
-        movies: movies.map(movie => <MovieCard key={ movie.id } { ...movie } />)
-      }))
+      .then(movies => this.setState({ movies: movies, error: '', status: 'success'}))
       .catch(error => {
-        this.setState({ error: error, status: 'error'})
+        this.setState({ error: error.message, status: 'error'})
       })
   }
 
   render() {
+    const status = this.state.status
     return (
-      <section className='gallery'>
-        { this.state.movies }
-      </section>
+      <>
+        {status === 'loading' && <h1 className='message'>Loading</h1>}
+        {status === 'error' && <h1 className='message'>{this.state.error}</h1>}
+        {status === 'success' && this.state.movies.length &&
+          <section className='gallery'>
+            { this.state.movies.map(movie =>
+              <MovieCard key={ movie.id } { ...movie } />
+            )}
+          </section>
+        }
+      </>
     )
   }
 }

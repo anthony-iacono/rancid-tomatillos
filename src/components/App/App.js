@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
-import './App.css'
+import { Route, Switch } from 'react-router-dom'
+
+import Header from '../Header/Header'
 import Gallery from '../Gallery/Gallery'
 import MovieDetails from '../MovieDetails/MovieDetails'
-import { Route, Switch } from 'react-router-dom'
+
+import './App.css'
 
 class App extends Component {
 
   render() {
     return (
       <>
-        <header>
-          <h1>CinemaCentral</h1>
-        </header>
+        <Header />
         <main>
           <Switch>
             <Route exact path='/' render={ () => <Gallery /> } />
