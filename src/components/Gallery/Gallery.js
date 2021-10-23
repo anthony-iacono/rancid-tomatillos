@@ -12,7 +12,7 @@ class Gallery extends Component {
 
   componentDidMount() {
     api.getAllMovies()
-      .then(movies => this.setState({ movies: movies, status: 'success'}))
+      .then(movies => this.setState({ movies: movies, error: '', status: 'success'}))
       .catch(error => {
         this.setState({ error: error.message, status: 'error'})
       })
