@@ -4,10 +4,13 @@ import api from '../../api'
 import './Gallery.css'
 
 class Gallery extends Component {
-  state = {
-    movies: [],
-    error: '',
-    status: 'loading'
+  constructor(props) {
+    super()
+    this.state = {
+      movies: [],
+      error: '',
+      status: 'loading'
+    }
   }
 
   componentDidMount() {
@@ -26,9 +29,11 @@ class Gallery extends Component {
         {status === 'error' && <h1 className='message'>{this.state.error}</h1>}
         {status === 'success' && this.state.movies.length &&
           <section className='gallery'>
-            { this.state.movies.map(movie =>
-              <MovieCard key={ movie.id } { ...movie } />
-            )}
+            { !this.props.searchTerms &&
+              this.state.movies.map(movie =>
+                <MovieCard key={ movie.id } { ...movie } />
+              )
+            }
           </section>
         }
       </>

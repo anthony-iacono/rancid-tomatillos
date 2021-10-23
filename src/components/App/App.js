@@ -25,7 +25,9 @@ class App extends Component {
         <Header handleChange={this.handleChange} searchTerms={ this.state.searchTerms }/>
         <main>
           <Switch>
-            <Route exact path='/' render={ () => <Gallery /> } />
+            <Route exact path='/' render={
+              () => <Gallery searchTerms={ this.state.searchTerms }/> 
+            } />
             <Route path='/movies/:id' render={ ({ match }) => {
               return <MovieDetails id={ match.params.id } />
             }} />
