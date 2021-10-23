@@ -30,7 +30,7 @@ class MovieDetails extends Component {
   }
 
   formatReleaseDate() {
-    const { movie: {release_date } } = this.state;
+    const { movie: { release_date } } = this.state;
     return new Date(release_date).toLocaleString('en-us', {
       year: 'numeric',
       month: 'long',
