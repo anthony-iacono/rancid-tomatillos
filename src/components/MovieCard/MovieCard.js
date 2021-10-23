@@ -16,5 +16,3 @@ const MovieCard = ({ id, poster_path, average_rating, release_date }) => {
 }
 
 export default MovieCard
-
-// <img src={ poster_path || 'https://bit.ly/3E1K2gk'} alt=''/>

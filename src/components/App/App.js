@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Switch, Link } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 import Header from '../Header/Header'
 import Gallery from '../Gallery/Gallery'
@@ -22,7 +22,6 @@ class App extends Component {
             <Route path='*'>
               <p>The page you are looking for doesn't exist</p>
             </Route>
-
           </Switch>
         </main>
         <footer>
