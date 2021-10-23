@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import YouTubeVideo from '../YouTubeVideo/YouTubeVideo'
 import api from '../../api'
 import './MovieDetails.css'
+import placeholder from '../../assets/placeholder.png'
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class MovieDetails extends Component {
       day: 'numeric'
     })
   }
-  
+
   formatGenres() {
     const { movie } = this.state;
     return movie.genres.join("/");
@@ -45,6 +46,7 @@ class MovieDetails extends Component {
   render() {
     const status = this.state.status
     const { movie, videos } = this.state;
+
     return (
       <>
         {status === 'loading' && <h1 className='message'>Loading</h1>}
@@ -54,7 +56,13 @@ class MovieDetails extends Component {
             <YouTubeVideo videoKey={videos[videos.length - 1].key}/>
             <section
               className="details"
-              style={{backgroundImage: `url(${this.state.movie.backdrop_path})`}}
+              style={{
+                backgroundImage: `url(${
+                  movie.backdrop_path
+                    ? movie.backdrop_path
+                    : placeholder
+                  })`
+                }}
             >
               <article className="details-wrapper">
                 <div className="heading">
