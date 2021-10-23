@@ -36,12 +36,7 @@ class MovieDetails extends Component {
       day: 'numeric'
     })
   }
-
-  formatRating() {
-    const { movie: { average_rating } } = this.state;
-    return Math.round(average_rating * 10) + "%";
-  }
-
+  
   formatGenres() {
     const { movie } = this.state;
     return movie.genres.join("/");
@@ -67,7 +62,7 @@ class MovieDetails extends Component {
                   {movie.tagline && <h3>{`${movie.tagline}`}</h3>}
                 </div>
                 <p>{movie.overview}</p>
-                <h4>{this.formatGenres()} - {movie.runtime} minutes - {this.formatRating()} rating</h4>
+                <h4>{this.formatGenres()} - {movie.runtime} minutes - {movie.average_rating.toFixed(1)} / 10 rating</h4>
                 <Link to='/'>
                   <button>Home</button>
                 </Link>
