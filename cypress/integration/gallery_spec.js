@@ -1,10 +1,9 @@
 describe('Gallery', () => {
   before(() => {
     cy.visit('http://localhost:3000')
-    // if login is re-implemented
-      // .get('input[type="email"]').type('sam@turing.io')
-      // .get('input[type="password"]').type('123456')
-      // .get('button').click()
+      .get('input[type="email"]').type('sam@turing.io')
+      .get('input[type="password"]').type('123456')
+      .get('button').click()
   })
 
   it('should display the proper URL when the Gallery is visited', () => {
@@ -44,14 +43,16 @@ describe('Gallery', () => {
   })
 
   it('should display an error message when server is down', () => {
-    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919', {
-      status: 500
+    cy.intercept({
+      method: 'GET',
+      url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919'
+    }, {
+      statusCode: 500,
+      ok: false
     })
-      // .get('.errorMessage')
-      .contains('.errorMessage', 'We are currently working on our servers. Please check back later.')
-  })
-
-  it.skip('should show additional info when a card is hovered over', () => {
-
+      .get('button').click()
+      .get('.movie-card').first().click()
+      .get('.message')
+        .contains('We\'re having issues on our end. Please try again later.')
   })
 })
