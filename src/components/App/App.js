@@ -17,11 +17,15 @@ class App extends Component {
       password: ''
     },
     user: {
-      name: JSON.parse(localStorage.getItem('user')).name || '',
-      id: JSON.parse(localStorage.getItem('user')).id || 0
+      name: '',
+      id: 0
     },
     error: '',
     status: 'loading'
+  }
+
+  componentDidMount() {
+    localStorage.getItem('user') && this.setState({ user: { name: JSON.parse(localStorage.getItem('user')).name, id: JSON.parse(localStorage.getItem('user')).id}, error: '', status: 'success' })
   }
 
   handleChange = (event) => {
@@ -32,7 +36,7 @@ class App extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    const { credentials: { email, password} } = this.state;
+    const { credentials: { email, password } } = this.state;
     api.getUser(email, password)
       .then(({ user: { id, name } }) => {
         this.setState({ user: { id, name }, error: '', status: 'success' })
@@ -46,8 +50,8 @@ class App extends Component {
   render() {
     return (
       <>
-        {!this.state.user.id && <Redirect to='/login' />}
-        <Header loggedIn={this.state.user.id && true}/>
+        {!this.state.user.id ? <Redirect to='/login' /> : <Redirect to='/' />}
+        <Header loggedIn={this.state.user.id ? true : false}/>
         <main>
           <Switch>
             <Route exact path='/login' render={ () => <Login data={this.state.credentials} error={this.state.error} handleChange={this.handleChange} handleSubmit={this.handleSubmit} /> } />

@@ -25,7 +25,7 @@ const Login = ({ email, password, error, handleChange, handleSubmit }) => {
         className='text-field'
       />
       <Link to='/' onClick={handleSubmit}>
-        <button className='login-btn'>Log in</button>
+        <button className='login-btn'>Log In</button>
       </Link>
     </form>
   )
