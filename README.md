@@ -2,14 +2,10 @@
 *A movie browsing app*
 
 ## Abstract
-
-
-## Deployment
-
+This movie browser allows users to view information and trailers for recent releases to help them decide which movie to watch.
 
 ## Demo
-[gif]
-[video]
+![demo](https://user-images.githubusercontent.com/72999840/138776462-fb62913a-1dd1-4ed0-9b9c-85728ce165f8.gif)
 
 ## Goals
 - Gain competency with React fundamentals
@@ -17,22 +13,17 @@
 - Practice refactoring
 - Create a multi-page UX using Router
 
-## Architecture
-  -
-
 ## Technologies
-  - JavaScript
-  - CSS/Sass
-  - HTML
-  - Express
-  - Node.js
-  - Chai & Mocha
-  - Fetch API
-  - Webpack
+- React
+- React Router
+- Cypress
+- CSS3
+- HTML5
+- Postman
 
 ## Setup
 To run the app locally:
-  - Fork [this repository](https://github.com/anthony-iacono/oasys)
+  - Fork [this repository](https://github.com/anthony-iacono/cinema-central)
   - Clone the repository and cd into it
   - Run `npm install`
   - Run `npm start`
@@ -47,17 +38,19 @@ To run the app locally:
 Turing School of Software & Design
 [GitHub](https://github.com/turingschool) | [LinkedIn](https://www.linkedin.com/school/turingschool/) | [Website](https://turing.edu/)
 
-Made with [Create React App](https://frontend.turing.io/lessons/module-3/react-2-the-how.html)
+Made with [Create React App](https://reactjs.org/docs/create-a-new-react-app.html)
 
 ## Planning
 - App development [planned and tracked](https://github.com/anthony-iacono/cinema-central/projects/1) using GitHub Projects
 - [Wireframe](https://www.figma.com/file/yiTkThOEDB0yAXhhUwCunr/Rancid-Tomatillos?node-id=0%3A1) created using [Figma](https://www.figma.com/)
 
 ## Wins
-  -
+  - Using string search and regex for search functionality
+  - Displaying YouTube videos in iframes
 
 ## Challenges
-  -
+  - Refactoring for React Router
+  - Handling Git errors
 
 ## Future Iterations
-  -
+  - Connect to an up-to-date third-party API
