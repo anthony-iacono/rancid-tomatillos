@@ -9,7 +9,7 @@ describe('CinemaCentral login flows', () => {
   })
 
   it('should render the correct elements', () => {
-    cy.contains('CinemaCentral')
+    cy.contains('Cinema Central')
       .get('input[type="email"]')
       .get('input[type="password"]')
       .get('button')
