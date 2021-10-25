@@ -26,7 +26,7 @@ class App extends Component {
         <main>
           <Switch>
             <Route exact path='/' render={
-              () => <Gallery searchTerms={ this.state.searchTerms }/> 
+              () => <Gallery searchTerms={this.state.searchTerms}/>
             } />
             <Route path='/movies/:id' render={ ({ match }) => {
               return <MovieDetails id={ match.params.id } />

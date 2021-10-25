@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import './Header.css'
 import searchIcon from '../../assets/img_197388.png'
 
-
 const Header = (props) => {
   return (
     <header>

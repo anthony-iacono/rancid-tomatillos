@@ -5,7 +5,7 @@ import './Gallery.css'
 
 class Gallery extends Component {
   constructor(props) {
-    super()
+    super(props)
     this.state = {
       allMovies: [],
       filteredMovies: [],
@@ -22,31 +22,31 @@ class Gallery extends Component {
       })
   }
 
-  // componentDidUpdate(prevState) {
-  //   console.log(prevState)
-  //   if (prevState.filteredMovies.length !== this.state.filteredMovies.length) {
-  //     const filteredMovies = this.state.allMovies.filter(movie => {
-  //       return movie.title.search(new RegExp(this.props.searchTerms, 'i'))
-  //     })
-  //     this.setState({ filteredMovies: filteredMovies })
-  //   }
-  // }
+  filterMovies() {
+    return this.state.allMovies.filter(movie => {
+      return movie.title.search(new RegExp(this.props.searchTerms, 'i')) !== -1
+    })
+  }
+
+  componentDidUpdate() {
+    const filteredMovies = this.filterMovies()
+    if (this.state.filteredMovies.length !== filteredMovies.length) {
+      this.setState({ filteredMovies: filteredMovies })
+    }
+  }
 
   render() {
     const status = this.state.status
-
+    const filteredMovies = this.state.filteredMovies.map(
+      movie => <MovieCard key={ movie.id } { ...movie } />
+    )
     return (
       <>
         {status === 'loading' && <h1 className='message'>Loading</h1>}
         {status === 'error' && <h1 className='message'>{this.state.error}</h1>}
-        {status === 'success' && this.state.allMovies.length &&
+        {status === 'success' &&
           <section className='gallery'>
-            { !this.state.filteredMovies.length && this.state.allMovies && this.state.allMovies.map(
-              movie => <MovieCard key={ movie.id } { ...movie } />
-            )}
-            { this.state.filteredMovies.length && this.filteredMovies.map(
-              movie => <MovieCard key={ movie.id } { ...movie } />
-            )}
+            { filteredMovies }
           </section>
         }
       </>
