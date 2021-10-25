@@ -18,7 +18,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cypress": "./node_modules/.bin/cypress open"
+    "cypress": "./node_modules/.bin/cypress open",
+    "lint": "eslint src/**/*.js"
   },
   "eslintConfig": {
     "extends": [
@@ -39,6 +40,8 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^8.6.0"
+    "babel-eslint": "^10.1.0",
+    "cypress": "^8.6.0",
+    "eslint-config-airbnb": "^18.2.1"
   }
 }

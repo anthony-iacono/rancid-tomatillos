@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
-
 import Login from '../Login/Login'
 import Header from '../Header/Header'
 import Gallery from '../Gallery/Gallery'
 import MovieDetails from '../MovieDetails/MovieDetails'
-
 import api from '../../api'
-
 import './App.css'
 
 class App extends Component {
@@ -20,12 +17,17 @@ class App extends Component {
       name: '',
       id: 0
     },
+    searchTerms: '',
     error: '',
     status: 'loading'
   }
 
   componentDidMount() {
     localStorage.getItem('user') && this.setState({ user: { name: JSON.parse(localStorage.getItem('user')).name, id: JSON.parse(localStorage.getItem('user')).id}, error: '', status: 'success' })
+  }
+
+  handleChangeInSearch = event => {
+    this.setState({ searchTerms: event.target.value })
   }
 
   handleLoginChange = (event) => {
@@ -51,12 +53,13 @@ class App extends Component {
     return (
       <>
         {!this.state.user.id ? <Redirect to='/login' /> : <Redirect to='/' />}
-        <Header loggedIn={this.state.user.id ? true : false}/>
+        <Header loggedIn={this.state.user.id ? true : false} handleChangeInSearch={this.handleChangeInSearch}
+        searchTerms={ this.state.searchTerms } />
         <main>
           <Switch>
             <Route exact path='/login' render={ () => <Login data={this.state.credentials} error={this.state.error} handleLoginChange={this.handleLoginChange} handleLoginSubmit={this.handleLoginSubmit} /> } />
             <Route exact path='/' render={ () => {
-              return this.state.user.id ? <Gallery /> : <Redirect to='/login' />
+              return this.state.user.id ? <Gallery searchTerms={this.state.searchTerms} /> : <Redirect to='/login' />
             } } />
             <Route path='/movies/:id' render={ ({ match }) => {
               return this.state.user.id ? <MovieDetails id={ match.params.id } /> : <Redirect to='/login' />
