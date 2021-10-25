@@ -28,7 +28,7 @@ class App extends Component {
     localStorage.getItem('user') && this.setState({ user: { name: JSON.parse(localStorage.getItem('user')).name, id: JSON.parse(localStorage.getItem('user')).id}, error: '', status: 'success' })
   }
 
-  handleChange = (event) => {
+  handleLoginChange = (event) => {
     const { credentials } = this.state
     const { name, value } = event.target
     this.setState({ credentials: { ...credentials, [name]: value } })
@@ -54,7 +54,7 @@ class App extends Component {
         <Header loggedIn={this.state.user.id ? true : false}/>
         <main>
           <Switch>
-            <Route exact path='/login' render={ () => <Login data={this.state.credentials} error={this.state.error} handleChange={this.handleChange} handleSubmit={this.handleSubmit} /> } />
+            <Route exact path='/login' render={ () => <Login data={this.state.credentials} error={this.state.error} handleLoginChange={this.handleLoginChange} handleSubmit={this.handleSubmit} /> } />
             <Route exact path='/' render={ () => {
               return this.state.user.id ? <Gallery /> : <Redirect to='/login' />
             } } />

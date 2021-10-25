@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './Login.css'
 import { Link } from 'react-router-dom'
 
-const Login = ({ email, password, error, handleChange, handleSubmit }) => {
+const Login = ({ email, password, error, handleLoginChange, handleSubmit }) => {
   return (
     <form>
       {error && <p className="message">{error}</p>}
@@ -11,7 +11,7 @@ const Login = ({ email, password, error, handleChange, handleSubmit }) => {
         placeholder='email'
         name='email'
         value={email}
-        onChange={handleChange}
+        onChange={handleLoginChange}
         required
         className='text-field'
       />
@@ -20,7 +20,7 @@ const Login = ({ email, password, error, handleChange, handleSubmit }) => {
         placeholder='password'
         name='password'
         value={password}
-        onChange={handleChange}
+        onChange={handleLoginChange}
         required
         className='text-field'
       />
