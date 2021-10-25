@@ -8,7 +8,7 @@ const Header = (props) => {
   return (
     <header>
       <Link to='/' >
-        <h1>CinemaCentral</h1>
+        <h1 className='title'>Cinema Central</h1>
       </Link>
       <nav>
         <span className="search">
