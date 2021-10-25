@@ -14,12 +14,13 @@ const Header = (props) => {
         <span className="search">
           <img className="search-icon" onClick={() => document.querySelector(".search-bar").classList.toggle("active")} src={searchIcon} alt='search icon' />
           <input
-            onChange={ event => props.handleChange(event) }
+            onChange={ event => props.handleChangeInSearch(event) }
             name='searchTerms'
             value={ props.searchTerms }
             className="search-bar"
             type="text"
-            placeholder="search by movie or genre..."/>
+            placeholder="search by movie or genre..."
+          />
         </span>
       </nav>
     </header>

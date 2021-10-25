@@ -12,7 +12,8 @@ describe('Header', () => {
   })
 
   it('should filter movies based on search input', () => {
-    cy.get('input').click().type('mulan')
+    cy.get('.search-icon').click()
+      .get('input').type('mulan')
       .get('article').click()
       .url().should('eq', 'http://localhost:3000/movies/337401')
   })

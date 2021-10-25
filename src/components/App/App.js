@@ -15,14 +15,14 @@ class App extends Component {
     }
   }
 
-  handleChange = event => {
+  handleChangeInSearch = event => {
     this.setState({ searchTerms: event.target.value })
   }
 
   render() {
     return (
       <>
-        <Header handleChange={this.handleChange} searchTerms={ this.state.searchTerms }/>
+        <Header handleChangeInSearch={this.handleChangeInSearch} searchTerms={ this.state.searchTerms }/>
         <main>
           <Switch>
             <Route exact path='/' render={
