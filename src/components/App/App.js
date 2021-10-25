@@ -34,7 +34,7 @@ class App extends Component {
     this.setState({ credentials: { ...credentials, [name]: value } })
   }
 
-  handleSubmit = (event) => {
+  handleLoginSubmit = (event) => {
     event.preventDefault()
     const { credentials: { email, password } } = this.state;
     api.getUser(email, password)
@@ -54,7 +54,7 @@ class App extends Component {
         <Header loggedIn={this.state.user.id ? true : false}/>
         <main>
           <Switch>
-            <Route exact path='/login' render={ () => <Login data={this.state.credentials} error={this.state.error} handleLoginChange={this.handleLoginChange} handleSubmit={this.handleSubmit} /> } />
+            <Route exact path='/login' render={ () => <Login data={this.state.credentials} error={this.state.error} handleLoginChange={this.handleLoginChange} handleLoginSubmit={this.handleLoginSubmit} /> } />
             <Route exact path='/' render={ () => {
               return this.state.user.id ? <Gallery /> : <Redirect to='/login' />
             } } />

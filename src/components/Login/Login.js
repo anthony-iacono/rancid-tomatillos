@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './Login.css'
 import { Link } from 'react-router-dom'
 
-const Login = ({ email, password, error, handleLoginChange, handleSubmit }) => {
+const Login = ({ email, password, error, handleLoginChange, handleLoginSubmit }) => {
   return (
     <form>
       {error && <p className="message">{error}</p>}
@@ -24,7 +24,7 @@ const Login = ({ email, password, error, handleLoginChange, handleSubmit }) => {
         required
         className='text-field'
       />
-      <Link to='/' onClick={handleSubmit}>
+      <Link to='/' onClick={handleLoginSubmit}>
         <button className='login-btn'>Log In</button>
       </Link>
     </form>
