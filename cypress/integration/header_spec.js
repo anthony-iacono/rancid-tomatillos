@@ -1,6 +1,9 @@
 describe('Header', () => {
   before(() => {
     cy.visit('http://localhost:3000')
+      .get('input[type="email"]').type('sam@turing.io')
+      .get('input[type="password"]').type('123456')
+      .get('button').click()
   })
 
   it('should display the site title', () => {
@@ -14,7 +17,7 @@ describe('Header', () => {
   it('should filter movies based on search input', () => {
     cy.get('.search-icon').click()
       .get('input').type('mulan')
-      .get('article').click()
+      .get('.movie-card').click()
       .url().should('eq', 'http://localhost:3000/movies/337401')
   })
 
