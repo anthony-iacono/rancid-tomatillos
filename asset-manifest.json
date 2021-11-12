@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/cinema-central/static/css/main.56086098.chunk.css",
-    "main.js": "/cinema-central/static/js/main.0f9826ca.chunk.js",
-    "main.js.map": "/cinema-central/static/js/main.0f9826ca.chunk.js.map",
+    "main.js": "/cinema-central/static/js/main.3f3f9446.chunk.js",
+    "main.js.map": "/cinema-central/static/js/main.3f3f9446.chunk.js.map",
     "runtime-main.js": "/cinema-central/static/js/runtime-main.e52cd01d.js",
     "runtime-main.js.map": "/cinema-central/static/js/runtime-main.e52cd01d.js.map",
     "static/js/2.cb0ff136.chunk.js": "/cinema-central/static/js/2.cb0ff136.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.e52cd01d.js",
     "static/js/2.cb0ff136.chunk.js",
     "static/css/main.56086098.chunk.css",
-    "static/js/main.0f9826ca.chunk.js"
+    "static/js/main.3f3f9446.chunk.js"
   ]
 }
