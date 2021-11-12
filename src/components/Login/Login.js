@@ -6,11 +6,12 @@ const Login = ({ email, password, error, handleLoginChange, handleLoginSubmit })
   return (
     <form>
       {error && <p className="message">{error}</p>}
+      <p className="message">To login as a guest, simply leave the email and password blank.</p>
       <input
         type='email'
         placeholder='email'
         name='email'
-        value={email || 'sam@turing.io'}
+        value={email}
         onChange={handleLoginChange}
         required
         className='text-field'
@@ -19,7 +20,7 @@ const Login = ({ email, password, error, handleLoginChange, handleLoginSubmit })
         type='password'
         placeholder='password'
         name='password'
-        value={password || '123456'}
+        value={password}
         onChange={handleLoginChange}
         required
         className='text-field'
