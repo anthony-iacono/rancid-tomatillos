@@ -10,7 +10,7 @@ const Login = ({ email, password, error, handleLoginChange, handleLoginSubmit })
         type='email'
         placeholder='email'
         name='email'
-        value={email}
+        value={email || 'sam@turing.io'}
         onChange={handleLoginChange}
         required
         className='text-field'
@@ -19,7 +19,7 @@ const Login = ({ email, password, error, handleLoginChange, handleLoginSubmit })
         type='password'
         placeholder='password'
         name='password'
-        value={password}
+        value={password || '123456'}
         onChange={handleLoginChange}
         required
         className='text-field'

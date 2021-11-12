@@ -10,8 +10,8 @@ import './App.css'
 class App extends Component {
   state = {
     credentials: {
-      email: '',
-      password: ''
+      email: 'sam@turing.io',
+      password: '123456'
     },
     user: {
       name: '',
