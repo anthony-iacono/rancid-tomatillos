@@ -24,7 +24,6 @@ class App extends Component {
 
   componentDidMount() {
     localStorage.getItem('user') && this.setState({ user: { name: JSON.parse(localStorage.getItem('user')).name, id: JSON.parse(localStorage.getItem('user')).id}, error: '', status: 'success' })
-    api.getSentiment();
   }
 
   handleChangeInSearch = event => {

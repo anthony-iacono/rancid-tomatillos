@@ -1,25 +1,19 @@
 const api = {
-  getSentiment() {
-    return fetch('https://api.dandelion.eu/datatxt/sent/v1/?lang=en&text=Kirk%20Cousins%20surprises%20Vikings%20social%20justice%20committee%20with%20$500000%20donation&token=8e05e6c7e8c24d05bb09b53e7f472df2')
-      .then(res => res.json())
-      .then(data => console.log(data))
-  },
-
   getUser(email, password) {
-  return fetch('https://rancid-tomatillos.herokuapp.com/api/v2/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-        email: email,
-        password: password
-      })
-  })
-    .then(response => {
-      this.checkResponse(response)
-      return response.json()
+    return fetch('https://rancid-tomatillos.herokuapp.com/api/v2/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          email: email,
+          password: password
+        })
     })
+      .then(response => {
+        this.checkResponse(response)
+        return response.json()
+      })
   },
 
   getAllMovies() {
