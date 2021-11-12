@@ -29,6 +29,7 @@ class Gallery extends Component {
   }
 
   componentDidUpdate() {
+    console.log('updated')
     const filteredMovies = this.filterMovies()
     if (this.state.filteredMovies.length !== filteredMovies.length) {
       this.setState({ filteredMovies: filteredMovies })
