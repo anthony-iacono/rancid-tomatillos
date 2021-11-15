@@ -4,6 +4,9 @@
 ## Abstract
 This movie browser allows users to view information and trailers for recent releases to help them decide which movie to watch.
 
+## Deployment
+Visit the [deployed app](https://anthony-iacono.github.io/cinema-central).
+
 ## Demo
 ![demo](https://user-images.githubusercontent.com/72999840/138776462-fb62913a-1dd1-4ed0-9b9c-85728ce165f8.gif)
 
